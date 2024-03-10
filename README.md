@@ -685,4 +685,190 @@ cubicos.
         
         printf("Letra minuscula: %c", maiuscula+32);
         return 0;
-  
+        }
+        
+46. Faça um programa que leia um número inteiro positivo de três dígitos (de 100 a 999). Gere outro número formado pelos dígitos invertidos do número lido. Exemplo:
+   - Número Lido = 123
+   - Número Gerado = 321.
+
+47. Leia um número inteiro de 4 dígitos (de 1000 a 9999) e imprima 1 dígito por linha.
+
+48. Leia um valor inteiro em segundos e imprima-o em horas, minutos e segundos.
+
+        #include <stdio.h>
+        
+        int main()
+        {
+        float segundos;
+        float horas;
+        float minutos;
+        
+        printf("Digite o valor em segundos para conversão: ");
+        scanf("%f",&segundos);
+        
+        minutos = segundos/60;
+        horas = minutos/60;
+        
+        printf("Valor em segundos: %f\n",segundos);
+        printf("Valor em minutos: %f\n",minutos);
+        printf("Valor em horas: %f\n",horas);
+        
+        return 0;
+        }
+
+
+49. Faça um programa para ler o horário (hora, minuto e segundo) de início e a duração, em segundos, de uma experiência biológica. O programa deve resultar com o novo horário (hora, minuto e segundo) do término da mesma.
+
+        #include <stdio.h>
+        
+        int main()
+        {
+        int horas_input;
+        int minutos_input;
+        int segundos_input;
+        int duracao_input;
+        int dias_input = 0;
+        
+        int dias_output;
+        int horas_output;
+        int minutos_output;
+        int segundos_output;
+        
+        printf("Digite a hora de inicio:");
+        scanf("%d", &horas_input);
+        printf("Digite os minutos de inicio:");
+        scanf("%d", &minutos_input);
+        printf("Digite os segundos de inicio:");
+        scanf("%d", &segundos_input);
+        printf("Digite a duração:");
+        scanf("%d", &duracao_input);
+        
+        segundos_output = (duracao_input%60) + segundos_input;
+        if (segundos_output > 60){
+            segundos_output = segundos_output - 60;
+            minutos_input = minutos_input + 1;
+        };
+        
+        minutos_output = ((duracao_input/60)%60) + minutos_input;
+        if (minutos_output > 60){
+            minutos_output = minutos_output - 60;
+            horas_input = horas_input + 1;
+        };
+        
+        horas_output = ((duracao_input/60)/60) + horas_input;
+        if (horas_output > 24){
+            horas_output = horas_output % 24;
+            dias_input = horas_output/24;
+        };
+        
+        dias_output = (((duracao_input/60)/60)/24) + dias_input;
+        
+        
+        if (dias_output >= 1){
+            printf("Sua experiência irá acabar daqui a %d dias\n",dias_output);
+            printf("As: %d:%d:%d",horas_output,minutos_output,segundos_output);
+        } 
+        else {
+        printf("Sua experiência irá acabar as: %d:%d:%d",horas_output,minutos_output,segundos_output);
+        }
+        
+        return 0;
+        }
+
+
+50. Implemente um programa que calcule o ano de nascimento de uma pessoa a partir de sua idade e do ano atual.
+
+        #include <stdio.h>
+        
+        int main()
+        {
+        int anoatual;
+        int idade;
+        
+        printf("Digite o ano atual:");
+        scanf("%d",&anoatual);
+        printf("Digite a sua idade:");
+        scanf("%d",&idade);
+        
+        printf("O ano do seu nascimento é: %d",anoatual-idade);
+        return 0;
+        }
+
+
+51. Escreva um programa que leia as coordenadas x e y de pontos no R² e calcule sua distância da origem (0, 0).
+
+        #include <stdio.h>
+        
+        int main()
+        {
+        int coord_x;
+        int coord_y;
+        
+        printf("Digite a coordenada X:");
+        scanf("%d",&coord_x);
+        printf("Digite a coordenada Y:");
+        scanf("%d",&coord_y);
+        
+        printf("A quantidade de passos para chegar na coordenada: %d,%d a partir de 0,0 é: %d", coord_x, coord_y, coord_y+coord_x);
+        
+        return 0;
+        }
+        
+
+52. Três amigos jogaram na loteria. Caso eles ganhem, o prêmio deve ser repartido proporcionalmente ao valor que cada um deu para a realização da aposta. Faça um programa que leia quanto cada apostador investiu, o valor do prêmio, e imprima quanto cada um ganharia do prêmio com base no valor investido.
+
+        #include <stdio.h>
+        
+        int main()
+        {
+        float investimento_1;
+        float investimento_2;
+        float investimento_3;
+        float valor_premio;
+        float investimento_total;
+        
+        
+        printf("Valor investido pelo amigo 1: ");
+        scanf("%f",&investimento_1);
+        printf("Valor investido pelo amigo 2: ");
+        scanf("%f",&investimento_2);
+        printf("Valor investido pelo amigo 3: ");
+        scanf("%f",&investimento_3);
+        printf("Valor premio: ");
+        scanf("%f",&valor_premio);
+        
+        investimento_total = investimento_1 + investimento_2 + investimento_3;
+        
+        printf("Valor a receber do ammigo 1: %f\n",valor_premio*((investimento_1*100)/investimento_total)/100);
+        printf("Valor a receber do ammigo 1: %f\n",valor_premio*((investimento_2*100)/investimento_total)/100);
+        printf("Valor a receber do ammigo 1: %f\n",valor_premio*((investimento_3*100)/investimento_total)/100);
+        
+        
+        return 0;
+        }
+
+
+53. Faça um programa para ler as dimensões de um terreno (comprimento \(c\) e largura \(l\)), bem como o preço do metro de tela \(p\). Imprima o custo para cercar este mesmo terreno com tela.
+
+        #include <stdio.h>
+        
+        int main()
+        {
+        float comprimento;
+        float largura;
+        float preco_tela;
+        float perimetro;
+        
+        printf("Qual o comprimento do terreno: ");
+        scanf("%f",&comprimento);
+        printf("Qual a largura do terreno: ");
+        scanf("%f",&largura);
+        printf("Qual o valor da tela em R: ");
+        scanf("%f",&preco_tela);
+        
+        perimetro = comprimento*2 + largura*2;
+        
+        printf("O valor total para cercar o terreno é:R$%f", perimetro*preco_tela);
+        return 0;
+        }
+
